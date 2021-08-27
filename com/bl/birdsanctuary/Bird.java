@@ -2,31 +2,21 @@ package com.bl.birdsanctuary;
 
 import java.util.Objects;
 
-abstract public class Bird {
+public class Bird {
 
     enum Color{
-        RED, WHITE, BLACK, GREY, GREEN, BLACK_WHITE
+        RED,BLACK_WHITE,GREY,BLACK,WHITE,GREEN
     }
 
     String id;
     Color color;
     String name;
+    boolean canFly;
+    boolean canSwim;
 
     @Override
     public String toString() {
-        return "Bird{" +
-                "id='" + id + '\'' +
-                ", color='" + color + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Bird)) return false;
-        Bird bird = (Bird) o;
-        return id.equals(bird.id);
+        return "Bird [id=" + id + ", color=" + color + ", name=" + name + "]";
     }
 
     @Override
@@ -34,9 +24,26 @@ abstract public class Bird {
         return Objects.hash(id);
     }
 
-    abstract public void fly();
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Bird other = (Bird) obj;
+        return Objects.equals(id, other.id);
+    }
 
-    abstract public void swim();
 
-    abstract public void eat();
+    public void eat(){
+        System.out.println(name +" can eat");}
+
+    public void fly(){
+        System.out.println(name +" can fly");
+    }
+
+    public void swim(){
+        System.out.println(name+" can swim");}
 }

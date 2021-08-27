@@ -3,36 +3,39 @@ package com.bl.birdsanctuary;
 public class ViewLayer {
 
     public void print() {
-        BirdSanctuaryRepository birdSanctuaryRepository = BirdSanctuaryRepository.getInstance();
-        for(Object items: birdSanctuaryRepository.getAllBirds()) {
+        BirdSancturayRepository birdSancturayRepository = BirdSancturayRepository.getInstance();
+
+        for (Bird items : birdSancturayRepository.getAllBirds()) {
             System.out.println(items);
         }
     }
 
     public void printFlyable() {
-        BirdSanctuaryRepository birdSanctuaryRepository = BirdSanctuaryRepository.getInstance();
-        for(Bird item: birdSanctuaryRepository.getAllBirds()) {
-            if ( item instanceof Flyable ) {
-    //            ((com.bl.birdsanctuary.Flyable) item).fly();
-                Flyable flyable = (Flyable) item;
-                flyable.fly();
+        BirdSancturayRepository birdSancturayRepository = BirdSancturayRepository.getInstance();
+
+        for (Bird items : birdSancturayRepository.getAllBirds()) {
+            if (items.canFly){
+                items.fly();
             }
         }
     }
 
     public void printSwimmable() {
-        BirdSanctuaryRepository birdSanctuaryRepository = BirdSanctuaryRepository.getInstance();
-        for(Bird item: birdSanctuaryRepository.getAllBirds()) {
-            if (item instanceof Swimmable ) {
-                ((Swimmable) item).swim();
+        BirdSancturayRepository birdSancturayRepository = BirdSancturayRepository.getInstance();
+
+        for (Bird items : birdSancturayRepository.getAllBirds()) {
+            if (items.canSwim){
+                items.swim();
             }
         }
     }
 
     public void printEatable() {
-        BirdSanctuaryRepository birdSanctuaryRepository = BirdSanctuaryRepository.getInstance();
-        for(Bird item: birdSanctuaryRepository.getAllBirds()) {
-            item.eat();
+        BirdSancturayRepository birdSancturayRepository = BirdSancturayRepository.getInstance();
+
+        for (Bird items : birdSancturayRepository.getAllBirds()) {
+            items.eat();
+
         }
     }
 }
